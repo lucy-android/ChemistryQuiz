@@ -1,25 +1,35 @@
 package by.budanitskaya.l.chemistryquiz
 
 
-import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import by.budanitskaya.l.chemistryquiz.databinding.ActivityMainBinding
 import by.budanitskaya.l.chemistryquiz.games.GamesFragment
 import by.budanitskaya.l.chemistryquiz.home.HomeFragment
 import by.budanitskaya.l.chemistryquiz.notifications.NotificationsFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.navigation.NavigationBarView
 
 
-class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : AppCompatActivity(R.layout.activity_main), NavigationBarView.OnItemSelectedListener {
 
+    private val binding: ActivityMainBinding by viewBinding(ActivityMainBinding::bind)
+
+    private var homeFragment: HomeFragment? = null
+        get() = if (field == null) HomeFragment() else field
+
+    private var gamesFragment: GamesFragment? = null
+        get() = if (field == null) GamesFragment() else field
+
+    private var notificationFragment: NotificationsFragment? = null
+        get() = if (field == null) NotificationsFragment() else field
+
+    override fun onStart() {
+        super.onStart()
         loadFragment(HomeFragment())
 
-        val navigation = findViewById<BottomNavigationView>(R.id.nav_view)
+        val navigation = binding.navView
         navigation.setOnItemSelectedListener(this)
     }
 
@@ -42,5 +52,12 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             return true
         }
         return false
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        homeFragment = null
+        gamesFragment = null
+        notificationFragment = null
     }
 }
