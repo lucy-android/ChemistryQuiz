@@ -10,5 +10,7 @@
     <color name="default_stroke_color">#A0A3BD</color>
     <color name="seafoam">#3DDC84</color>
     <color name="grey_transparent">#33FFFFFF</color>
-    <color name="blue3">#64B5F6</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="lemon">#FFFB76</color>
+    <color name="bubblegum">#F987C1</color>
 </resources>

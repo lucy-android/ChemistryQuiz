@@ -18,7 +18,7 @@
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_methane_model</item>
         <item name="postSplashScreenTheme">@style/Theme.ChemistryQuiz</item>
         <item name="windowSplashScreenBackground">@color/white</item>
-        <item name="windowSplashScreenIconBackgroundColor">@color/blue3</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/lemon</item>
     </style>
 
 </resources>
