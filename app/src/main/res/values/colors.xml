@@ -8,9 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="default_stroke_color">#A0A3BD</color>
-    <color name="seafoam">#3DDC84</color>
+    <color name="forest_green">#4CBB17</color>
+    <color name="emerald">#52C778</color>
     <color name="grey_transparent">#33FFFFFF</color>
     <color name="yellow">#FFFF00</color>
     <color name="lemon">#FFFB76</color>
     <color name="bubblegum">#F987C1</color>
+    <color name="blue">#007fff</color>
 </resources>

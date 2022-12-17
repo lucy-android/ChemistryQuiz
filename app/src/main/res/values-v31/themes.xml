@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Splash Screen for Android 12+-->
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen.IconBackground">
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_atomic_structure</item>
+        <item name="postSplashScreenTheme">@style/Theme.ChemistryQuiz</item>
+        <item name="windowSplashScreenBackground">@color/bubblegum</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/bubblegum</item>
+        <item name="android:windowSplashScreenBrandingImage">@drawable/plash_branding_name</item>
+    </style>
+
+</resources>
