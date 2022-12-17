@@ -13,6 +13,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import by.budanitskaya.l.chemistryquiz.databinding.ActivityMainBinding
 import by.kirich1409.viewbindingdelegate.viewBinding
 import java.util.*
+import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.concurrent.schedule
 
 
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val binding: ActivityMainBinding by viewBinding(ActivityMainBinding::bind)
 
-    var contentHasLoaded = false
+    private var contentHasLoaded: AtomicBoolean = AtomicBoolean(false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -42,10 +43,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun startLoadingContent() {
-        // For this example, the Timer delay represents awaiting a response from a network call
-        Timer().schedule(3000) {
-            contentHasLoaded = true
-        }
+        Timer().schedule(30000) { contentHasLoaded.compareAndSet(false, true) }
     }
 
     private fun setupSplashScreen(splashScreen: SplashScreen) {
@@ -53,7 +51,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         content.viewTreeObserver.addOnPreDrawListener(
             object : ViewTreeObserver.OnPreDrawListener {
                 override fun onPreDraw(): Boolean {
-                    return if (contentHasLoaded) {
+                    return if (contentHasLoaded.get()) {
                         content.viewTreeObserver.removeOnPreDrawListener(this)
                         true
                     } else false
