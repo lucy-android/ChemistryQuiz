@@ -4,7 +4,7 @@
     <!--Splash Screen for Android 12+-->
     <style name="Theme.App.Starting" parent="Theme.SplashScreen.IconBackground">
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splashscreen_logo_animated</item>
-        <item name="android:windowSplashScreenAnimationDuration">2147483647</item>
+        <item name="android:windowSplashScreenAnimationDuration">4000</item>
         <item name="postSplashScreenTheme">@style/Theme.ChemistryQuiz</item>
         <item name="windowSplashScreenBackground">@color/ice_blue</item>
         <item name="windowSplashScreenIconBackgroundColor">@color/indigo</item>

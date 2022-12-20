@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.splashscreen.SplashScreenViewProvider
 import by.budanitskaya.l.chemistryquiz.databinding.ActivityMainBinding
 import by.kirich1409.viewbindingdelegate.viewBinding
 import java.util.*
@@ -43,11 +44,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun startLoadingContent() {
-        Timer().schedule(30000) { contentHasLoaded.compareAndSet(false, true) }
+        Timer().schedule(3000) { contentHasLoaded.compareAndSet(false, true) }
     }
 
     private fun setupSplashScreen(splashScreen: SplashScreen) {
-        val content: View = findViewById(android.R.id.content)
+        val content = binding.root
         content.viewTreeObserver.addOnPreDrawListener(
             object : ViewTreeObserver.OnPreDrawListener {
                 override fun onPreDraw(): Boolean {
@@ -67,11 +68,19 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 -splashScreenView.view.width.toFloat()
             ).apply {
                 interpolator = DecelerateInterpolator()
-                duration = 800L
+                duration = calculateRemainingAnimationDuration(splashScreenView) + 500
                 doOnEnd { splashScreenView.remove() }
             }
 
             slideBack.start()
         }
+    }
+
+    private fun calculateRemainingAnimationDuration(splashScreenView: SplashScreenViewProvider): Long {
+        val firstAnimationExpectedDuration = splashScreenView.iconAnimationDurationMillis
+        val firstAnimationStart = splashScreenView.iconAnimationStartMillis
+        val firstAnimationEnd = System.currentTimeMillis()
+        return (firstAnimationExpectedDuration + firstAnimationStart - firstAnimationEnd)
+            .coerceAtLeast(0L)
     }
 }
