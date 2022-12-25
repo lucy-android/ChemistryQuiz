@@ -3,92 +3,92 @@
     <item android:gravity="center">
         <layer-list>
             <item
-                android:width="24dp"
-                android:height="24dp"
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
                 android:drawable="@drawable/ic_letter_f_uppercase">
 
             </item>
             <item
-                android:width="24dp"
-                android:height="24dp"
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
                 android:start="20dp"
                 android:drawable="@drawable/ic_letter_u_lowercase">
             </item>
 
             <item
-                android:width="24dp"
-                android:height="24dp"
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
                 android:start="38dp"
                 android:drawable="@drawable/ic_letter_n_lowercase">
             </item>
 
             <item
-                android:width="24dp"
-                android:height="24dp"
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
                 android:start="@dimen/dimen_50"
-                android:top="3dp"
+                android:top="@dimen/dimen_3"
                 android:drawable="@drawable/ic_letter_c_uppercase">
             </item>
 
             <item
-                android:width="24dp"
-                android:height="24dp"
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
                 android:start="71dp"
-                android:top="3dp"
+                android:top="@dimen/dimen_3"
                 android:drawable="@drawable/ic_letter_h_lowercase">
             </item>
 
             <item
-                android:width="24dp"
-                android:height="24dp"
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
                 android:start="78dp"
-                android:top="3dp"
+                android:top="@dimen/dimen_3"
                 android:drawable="@drawable/ic_letter_e_lowercase">
             </item>
 
             <item
-                android:width="24dp"
-                android:height="24dp"
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
                 android:start="99dp"
                 android:top="0dp"
                 android:drawable="@drawable/ic_letter_m_lowercase">
             </item>
 
             <item
-                android:width="24dp"
-                android:height="24dp"
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
                 android:start="118dp"
-                android:top="3dp"
+                android:top="@dimen/dimen_3"
                 android:drawable="@drawable/ic_letter_i_lowercase">
             </item>
 
             <item
-                android:width="24dp"
-                android:height="24dp"
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
                 android:start="135dp"
-                android:top="3dp"
+                android:top="@dimen/dimen_3"
                 android:drawable="@drawable/ic_letter_s_lowercase">
             </item>
 
             <item
-                android:width="24dp"
-                android:height="24dp"
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
                 android:start="143dp"
                 android:top="0dp"
                 android:drawable="@drawable/ic_letter_t_lowercase">
             </item>
 
             <item
-                android:width="24dp"
-                android:height="24dp"
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
                 android:start="163dp"
                 android:top="0dp"
                 android:drawable="@drawable/ic_letter_r_lowercase">
             </item>
 
             <item
-                android:width="24dp"
-                android:height="24dp"
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
                 android:start="170dp"
                 android:top="4dp"
                 android:drawable="@drawable/ic_letter_y_lowercase">
