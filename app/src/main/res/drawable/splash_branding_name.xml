@@ -11,14 +11,14 @@
             <item
                 android:width="@dimen/default_letter_size"
                 android:height="@dimen/default_letter_size"
-                android:start="20dp"
+                android:start="@dimen/dimen_20"
                 android:drawable="@drawable/ic_letter_u_lowercase">
             </item>
 
             <item
                 android:width="@dimen/default_letter_size"
                 android:height="@dimen/default_letter_size"
-                android:start="38dp"
+                android:start="@dimen/dimen_38"
                 android:drawable="@drawable/ic_letter_n_lowercase">
             </item>
 
@@ -33,7 +33,7 @@
             <item
                 android:width="@dimen/default_letter_size"
                 android:height="@dimen/default_letter_size"
-                android:start="71dp"
+                android:start="@dimen/dimen_71"
                 android:top="@dimen/dimen_3"
                 android:drawable="@drawable/ic_letter_h_lowercase">
             </item>
@@ -41,7 +41,7 @@
             <item
                 android:width="@dimen/default_letter_size"
                 android:height="@dimen/default_letter_size"
-                android:start="78dp"
+                android:start="@dimen/dimen_78"
                 android:top="@dimen/dimen_3"
                 android:drawable="@drawable/ic_letter_e_lowercase">
             </item>
@@ -49,7 +49,7 @@
             <item
                 android:width="@dimen/default_letter_size"
                 android:height="@dimen/default_letter_size"
-                android:start="99dp"
+                android:start="@dimen/dimen_99"
                 android:top="0dp"
                 android:drawable="@drawable/ic_letter_m_lowercase">
             </item>
@@ -57,7 +57,7 @@
             <item
                 android:width="@dimen/default_letter_size"
                 android:height="@dimen/default_letter_size"
-                android:start="118dp"
+                android:start="@dimen/dimen_118"
                 android:top="@dimen/dimen_3"
                 android:drawable="@drawable/ic_letter_i_lowercase">
             </item>
@@ -65,7 +65,7 @@
             <item
                 android:width="@dimen/default_letter_size"
                 android:height="@dimen/default_letter_size"
-                android:start="135dp"
+                android:start="@dimen/dimen_135"
                 android:top="@dimen/dimen_3"
                 android:drawable="@drawable/ic_letter_s_lowercase">
             </item>
@@ -73,7 +73,7 @@
             <item
                 android:width="@dimen/default_letter_size"
                 android:height="@dimen/default_letter_size"
-                android:start="143dp"
+                android:start="@dimen/dimen_143"
                 android:top="0dp"
                 android:drawable="@drawable/ic_letter_t_lowercase">
             </item>
@@ -81,7 +81,7 @@
             <item
                 android:width="@dimen/default_letter_size"
                 android:height="@dimen/default_letter_size"
-                android:start="163dp"
+                android:start="@dimen/dimen_163"
                 android:top="0dp"
                 android:drawable="@drawable/ic_letter_r_lowercase">
             </item>
@@ -89,8 +89,8 @@
             <item
                 android:width="@dimen/default_letter_size"
                 android:height="@dimen/default_letter_size"
-                android:start="170dp"
-                android:top="4dp"
+                android:start="@dimen/dimen_170"
+                android:top="@dimen/dimen_4"
                 android:drawable="@drawable/ic_letter_y_lowercase">
             </item>
 
