@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:gravity="center">
+        <layer-list>
+            <item
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
+                android:drawable="@drawable/ic_letter_f_uppercase">
+
+            </item>
+            <item
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
+                android:start="@dimen/dimen_20"
+                android:drawable="@drawable/ic_letter_u_lowercase">
+            </item>
+
+            <item
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
+                android:start="@dimen/dimen_38"
+                android:drawable="@drawable/ic_letter_n_lowercase">
+            </item>
+
+            <item
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
+                android:start="@dimen/dimen_50"
+                android:top="@dimen/dimen_3"
+                android:drawable="@drawable/ic_letter_c_uppercase">
+            </item>
+
+            <item
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
+                android:start="@dimen/dimen_71"
+                android:top="@dimen/dimen_3"
+                android:drawable="@drawable/ic_letter_h_lowercase">
+            </item>
+
+            <item
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
+                android:start="@dimen/dimen_78"
+                android:top="@dimen/dimen_3"
+                android:drawable="@drawable/ic_letter_e_lowercase">
+            </item>
+
+            <item
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
+                android:start="@dimen/dimen_99"
+                android:top="0dp"
+                android:drawable="@drawable/ic_letter_m_lowercase">
+            </item>
+
+            <item
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
+                android:start="@dimen/dimen_118"
+                android:top="@dimen/dimen_3"
+                android:drawable="@drawable/ic_letter_i_lowercase">
+            </item>
+
+            <item
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
+                android:start="@dimen/dimen_135"
+                android:top="@dimen/dimen_3"
+                android:drawable="@drawable/ic_letter_s_lowercase">
+            </item>
+
+            <item
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
+                android:start="@dimen/dimen_143"
+                android:top="0dp"
+                android:drawable="@drawable/ic_letter_t_lowercase">
+            </item>
+
+            <item
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
+                android:start="@dimen/dimen_163"
+                android:top="0dp"
+                android:drawable="@drawable/ic_letter_r_lowercase">
+            </item>
+
+            <item
+                android:width="@dimen/default_letter_size"
+                android:height="@dimen/default_letter_size"
+                android:start="@dimen/dimen_170"
+                android:top="@dimen/dimen_4"
+                android:drawable="@drawable/ic_letter_y_lowercase">
+            </item>
+
+        </layer-list>
+    </item>
+</layer-list>

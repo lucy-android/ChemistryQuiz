@@ -35,7 +35,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:background="?android:attr/windowBackground"
-            app:itemIconSize="22dp"
+            app:itemIconSize="@dimen/dimen_22"
             app:itemIconTint="@color/navigation_item"
             app:itemTextAppearanceActive="@style/TextAppearance.ChemistryQuiz.BottomNavigationView.TextActive"
             app:itemTextAppearanceInactive="@style/TextAppearance.ChemistryQuiz.BottomNavigationView.TextInactive"
