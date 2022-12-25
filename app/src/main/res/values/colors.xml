@@ -10,6 +10,7 @@
     <color name="default_stroke_color">#A0A3BD</color>
     <color name="forest_green">#4CBB17</color>
     <color name="emerald">#52C778</color>
+    <color name="salad">#6ec62e</color>
     <color name="grey_transparent">#33FFFFFF</color>
     <color name="yellow">#FFFF00</color>
     <color name="lemon">#FFFB76</color>
@@ -18,4 +19,5 @@
     <color name="indigo">#00162C</color>
     <color name="ice_blue">#D0E6F4</color>
     <color name="turquoise">#4DD0E1</color>
+
 </resources>
