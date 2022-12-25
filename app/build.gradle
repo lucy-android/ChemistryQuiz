@@ -47,4 +47,10 @@ dependencies {
 
     // View Binding Delegate
     implementation "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.3"
+
+    // Dagger
+    def dagger_version="2.43.2"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
 }
