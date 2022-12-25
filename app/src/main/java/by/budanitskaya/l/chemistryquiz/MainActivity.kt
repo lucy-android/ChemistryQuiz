@@ -1,10 +1,9 @@
 package by.budanitskaya.l.chemistryquiz
 
 
-import android.os.Bundle
-import android.os.PersistableBundle
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.animation.DecelerateInterpolator
