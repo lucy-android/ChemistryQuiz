@@ -19,6 +19,10 @@ import kotlin.concurrent.schedule
 
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
+    companion object {
+        const val SPLASH_SCREEN_DELAY = 3000L
+        const val ANIMATION_DELAY = 1500
+    }
 
     private val binding: ActivityMainBinding by viewBinding(ActivityMainBinding::bind)
 
@@ -29,7 +33,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         val splashScreen = installSplashScreen()
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         startLoadingContent()
 
@@ -44,7 +47,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun startLoadingContent() {
-        Timer().schedule(3000) { contentHasLoaded.compareAndSet(false, true) }
+        Timer().schedule(SPLASH_SCREEN_DELAY) { contentHasLoaded.compareAndSet(false, true) }
     }
 
     private fun setupSplashScreen(splashScreen: SplashScreen) {
@@ -63,12 +66,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         splashScreen.setOnExitAnimationListener { splashScreenView ->
             val slideBack = ObjectAnimator.ofFloat(
                 splashScreenView.view,
-                View.TRANSLATION_X,
+                View.TRANSLATION_Y,
                 0f,
-                -splashScreenView.view.width.toFloat()
+                -splashScreenView.view.height.toFloat()
             ).apply {
                 interpolator = DecelerateInterpolator()
-                duration = calculateRemainingAnimationDuration(splashScreenView) + 500
+                duration = calculateRemainingAnimationDuration(splashScreenView) + ANIMATION_DELAY
                 doOnEnd { splashScreenView.remove() }
             }
 

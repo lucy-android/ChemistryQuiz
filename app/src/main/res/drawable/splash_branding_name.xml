@@ -22,6 +22,78 @@
                 android:drawable="@drawable/ic_letter_n_lowercase">
             </item>
 
+            <item
+                android:width="24dp"
+                android:height="24dp"
+                android:start="50dp"
+                android:top="3dp"
+                android:drawable="@drawable/ic_letter_c_uppercase">
+            </item>
+
+            <item
+                android:width="24dp"
+                android:height="24dp"
+                android:start="71dp"
+                android:top="3dp"
+                android:drawable="@drawable/ic_letter_h_lowercase">
+            </item>
+
+            <item
+                android:width="24dp"
+                android:height="24dp"
+                android:start="78dp"
+                android:top="3dp"
+                android:drawable="@drawable/ic_letter_e_lowercase">
+            </item>
+
+            <item
+                android:width="24dp"
+                android:height="24dp"
+                android:start="99dp"
+                android:top="0dp"
+                android:drawable="@drawable/ic_letter_m_lowercase">
+            </item>
+
+            <item
+                android:width="24dp"
+                android:height="24dp"
+                android:start="118dp"
+                android:top="3dp"
+                android:drawable="@drawable/ic_letter_i_lowercase">
+            </item>
+
+            <item
+                android:width="24dp"
+                android:height="24dp"
+                android:start="135dp"
+                android:top="3dp"
+                android:drawable="@drawable/ic_letter_s_lowercase">
+            </item>
+
+            <item
+                android:width="24dp"
+                android:height="24dp"
+                android:start="143dp"
+                android:top="0dp"
+                android:drawable="@drawable/ic_letter_t_lowercase">
+            </item>
+
+            <item
+                android:width="24dp"
+                android:height="24dp"
+                android:start="163dp"
+                android:top="0dp"
+                android:drawable="@drawable/ic_letter_r_lowercase">
+            </item>
+
+            <item
+                android:width="24dp"
+                android:height="24dp"
+                android:start="170dp"
+                android:top="4dp"
+                android:drawable="@drawable/ic_letter_y_lowercase">
+            </item>
+
         </layer-list>
     </item>
 </layer-list>
