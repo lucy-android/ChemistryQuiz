@@ -25,7 +25,7 @@
             <item
                 android:width="24dp"
                 android:height="24dp"
-                android:start="50dp"
+                android:start="@dimen/dimen_50"
                 android:top="3dp"
                 android:drawable="@drawable/ic_letter_c_uppercase">
             </item>
