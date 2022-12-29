@@ -2,11 +2,15 @@ package by.budanitskaya.l.chemistryquiz
 
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.animation.DecelerateInterpolator
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen
@@ -14,6 +18,9 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.splashscreen.SplashScreenViewProvider
 import by.budanitskaya.l.chemistryquiz.databinding.ActivityMainBinding
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.firebase.ui.auth.AuthUI
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.concurrent.schedule
@@ -29,6 +36,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private var contentHasLoaded: AtomicBoolean = AtomicBoolean(false)
 
+    private val firebaseAuthHelper = FirebaseAuthHelperImpl(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         (application as ChemistryApp).appComponent.inject(this)
@@ -41,14 +50,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         setupSplashScreen(splashScreen)
     }
 
-
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        (application as ChemistryApp).appComponent.inject(this)
-        super.onCreate(savedInstanceState, persistentState)
-    }
-
     override fun onStart() {
         super.onStart()
+        setSupportActionBar(binding.toolbar)
+        title = ""
         val navigator = Navigator(supportFragmentManager, binding.navView)
         this.lifecycle.addObserver(navigator)
     }
@@ -93,4 +98,74 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         return (firstAnimationExpectedDuration + firstAnimationStart - firstAnimationEnd)
             .coerceAtLeast(0L)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.logout_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.sign_out -> {
+                signOut()
+                startActivity(Intent(this, LoginActivity::class.java))
+                true
+            }
+
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    fun signOut() {
+        AuthUI.getInstance()
+            .signOut(this)
+            .addOnCompleteListener {
+                val intent = Intent(this, LoginActivity::class.java)
+                this.startActivity(intent)
+                this.finish()
+                Toast.makeText(this, "Successfully Log Out", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        firebaseAuthHelper.updateView()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
+    }
+}
+
+class FirebaseAuthHelperImpl(val activity: MainActivity) : FirebaseAuthHelper {
+    val auth: FirebaseUser by lazy {
+        FirebaseAuth.getInstance().currentUser
+    }
+
+    override fun updateView() {
+        if (auth != null && activity.intent != null) {
+            createUI()
+        } else {
+            activity.startActivity(Intent(activity, LoginActivity::class.java))
+            activity.finish()
+        }
+    }
+
+    override fun createUI() {
+        val list = auth?.providerData
+        var providerData: String = ""
+        list?.let {
+            for (provider in list) {
+                providerData = providerData + " " + provider.providerId
+            }
+        }
+    }
+}
+
+interface FirebaseAuthHelper{
+    fun updateView()
+    fun createUI()
 }
