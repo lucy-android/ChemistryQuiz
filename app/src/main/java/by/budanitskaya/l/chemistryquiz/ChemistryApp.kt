@@ -5,5 +5,8 @@ import by.budanitskaya.l.chemistryquiz.di.DaggerChemistryAppComponent
 
 class ChemistryApp : Application() {
 
-    val appComponent = DaggerChemistryAppComponent.create()
+    val appComponent = DaggerChemistryAppComponent
+        .builder()
+        .injectContext(this)
+        .buildAppComp()
 }
