@@ -4,7 +4,6 @@ package by.budanitskaya.l.chemistryquiz
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -131,7 +130,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onResume() {
         super.onResume()
-        // firebaseAuthHelper.updateView()
+        firebaseAuthHelper.updateView()
     }
 
     override fun onBackPressed() {
@@ -140,14 +139,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 }
 
-class FirebaseAuthHelperImpl(val activity: MainActivity) : FirebaseAuthHelper {
-    val auth: FirebaseUser by lazy {
+class FirebaseAuthHelperImpl(private val activity: MainActivity) : FirebaseAuthHelper {
+    private val auth: FirebaseUser by lazy {
         FirebaseAuth.getInstance().currentUser
     }
 
     override fun updateView() {
         if (activity.intent != null) {
-           // createUI()
+           createUI()
         } else {
             activity.startActivity(Intent(activity, LoginActivity::class.java))
             activity.finish()
