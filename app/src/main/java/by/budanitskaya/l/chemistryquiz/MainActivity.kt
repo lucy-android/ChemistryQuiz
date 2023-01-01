@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onResume() {
         super.onResume()
-        firebaseAuthHelper.updateView()
+        // firebaseAuthHelper.updateView()
     }
 
     override fun onBackPressed() {
@@ -146,8 +146,8 @@ class FirebaseAuthHelperImpl(val activity: MainActivity) : FirebaseAuthHelper {
     }
 
     override fun updateView() {
-        if (auth != null && activity.intent != null) {
-            createUI()
+        if (activity.intent != null) {
+           // createUI()
         } else {
             activity.startActivity(Intent(activity, LoginActivity::class.java))
             activity.finish()
@@ -155,9 +155,9 @@ class FirebaseAuthHelperImpl(val activity: MainActivity) : FirebaseAuthHelper {
     }
 
     override fun createUI() {
-        val list = auth?.providerData
-        var providerData: String = ""
-        list?.let {
+        val list = auth.providerData
+        var providerData = ""
+        list.let {
             for (provider in list) {
                 providerData = providerData + " " + provider.providerId
             }
