@@ -16,6 +16,6 @@ interface GamesComponent {
         fun addContext(context: Context): GamesBuilder
     }
 
-    fun inject(gamesFragment: GamesFragment)
+    fun getPrinter(): GamePrinter
 
 }

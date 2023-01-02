@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onResume() {
         super.onResume()
-        firebaseAuthHelper.updateView()
+        // firebaseAuthHelper.updateView()
     }
 
     override fun onBackPressed() {
@@ -146,7 +146,7 @@ class FirebaseAuthHelperImpl(private val activity: MainActivity) : FirebaseAuthH
 
     override fun updateView() {
         if (activity.intent != null) {
-           createUI()
+           // createUI()
         } else {
             activity.startActivity(Intent(activity, LoginActivity::class.java))
             activity.finish()

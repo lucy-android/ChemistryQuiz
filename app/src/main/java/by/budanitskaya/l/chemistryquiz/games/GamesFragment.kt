@@ -15,18 +15,20 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
     private val binding: FragmentGamesBinding by viewBinding(FragmentGamesBinding::bind)
 
     @Inject
-    lateinit var gamePrinter: GamePrinter
-
+    lateinit var gamesBuilder: GamesComponent.GamesBuilder
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (activity?.application as ChemistryApp).appComponent.provideGamesBuilder()
-            .addContext(requireContext()).gamesComponent().inject(this)
+        (activity?.application as ChemistryApp).appComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textViewGames.text = gamePrinter.getText()
-
+        binding.textViewGames.text =
+            gamesBuilder
+                .addContext(requireContext())
+                .gamesComponent()
+                .getPrinter()
+                .getText()
     }
 }
