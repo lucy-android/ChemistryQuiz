@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
     private fun createSignInIntent() {
         val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build(),
-            // AuthUI.IdpConfig.GoogleBuilder().build()
+            AuthUI.IdpConfig.AnonymousBuilder().build()
         )
         startActivityForResult(
             AuthUI.getInstance()
