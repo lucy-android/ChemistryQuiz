@@ -21,4 +21,7 @@
     <dimen name="default_vector_size">100dp</dimen>
     <dimen name="default_letter_size">24dp</dimen>
 
+    <!--Paddings-->
+    <dimen name="layout_padding">16dp</dimen>
+
 </resources>
