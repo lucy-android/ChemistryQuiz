@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 
-    fun signOut() {
+    private fun signOut() {
         AuthUI.getInstance()
             .signOut(this)
             .addOnCompleteListener {
@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onResume() {
         super.onResume()
-        // firebaseAuthHelper.updateView()
+        firebaseAuthHelper.updateView()
     }
 
     override fun onBackPressed() {
@@ -140,13 +140,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 }
 
 class FirebaseAuthHelperImpl(private val activity: MainActivity) : FirebaseAuthHelper {
-    private val auth: FirebaseUser by lazy {
+    private val auth: FirebaseUser? by lazy {
         FirebaseAuth.getInstance().currentUser
     }
 
     override fun updateView() {
         if (activity.intent != null) {
-           // createUI()
+           createUI()
         } else {
             activity.startActivity(Intent(activity, LoginActivity::class.java))
             activity.finish()
@@ -154,9 +154,9 @@ class FirebaseAuthHelperImpl(private val activity: MainActivity) : FirebaseAuthH
     }
 
     override fun createUI() {
-        val list = auth.providerData
+        val list = auth?.providerData
         var providerData = ""
-        list.let {
+        list?.let {
             for (provider in list) {
                 providerData = providerData + " " + provider.providerId
             }

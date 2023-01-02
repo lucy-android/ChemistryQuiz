@@ -29,9 +29,7 @@ class LoginActivity : AppCompatActivity() {
     private fun createSignInIntent() {
         val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.GoogleBuilder().build(),
-            AuthUI.IdpConfig.PhoneBuilder().build()
-
+            // AuthUI.IdpConfig.GoogleBuilder().build()
         )
         startActivityForResult(
             AuthUI.getInstance()
@@ -52,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
-            var response = IdpResponse.fromResultIntent(data)
+            val response = IdpResponse.fromResultIntent(data)
             if (resultCode == Activity.RESULT_OK) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
