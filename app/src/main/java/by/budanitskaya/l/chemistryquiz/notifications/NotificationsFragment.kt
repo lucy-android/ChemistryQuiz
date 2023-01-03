@@ -10,7 +10,9 @@ import by.budanitskaya.l.chemistryquiz.LoginActivity
 import by.budanitskaya.l.chemistryquiz.MainActivity
 import by.budanitskaya.l.chemistryquiz.R
 import by.budanitskaya.l.chemistryquiz.databinding.FragmentNotificationsBinding
+import by.budanitskaya.l.chemistryquiz.utils.context.ContextExtensions.showToast
 import by.budanitskaya.l.chemistryquiz.utils.context.ContextExtensions.start
+import by.budanitskaya.l.chemistryquiz.utils.view.ViewExtensions.click
 import by.kirich1409.viewbindingdelegate.viewBinding
 
 class NotificationsFragment : Fragment(R.layout.fragment_notifications) {
@@ -24,15 +26,14 @@ class NotificationsFragment : Fragment(R.layout.fragment_notifications) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.buttonLogout.setOnClickListener {
+        binding.buttonLogout click {
             (activity as MainActivity).signOut()
-            requireContext().start<LoginActivity> {
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.logged_out),
-                    Toast.LENGTH_LONG
-                ).show()
-            }
+            requireContext()
+                .apply {
+                    start<LoginActivity> {
+                        showToast(getString(R.string.logged_out))
+                    }
+                }
         }
     }
 }
