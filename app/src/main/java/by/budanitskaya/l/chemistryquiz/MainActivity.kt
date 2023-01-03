@@ -98,26 +98,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             .coerceAtLeast(0L)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.logout_menu, menu)
-        return true
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.sign_out -> {
-                signOut()
-                startActivity(Intent(this, LoginActivity::class.java))
-                true
-            }
-
-
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-    private fun signOut() {
+    fun signOut() {
         AuthUI.getInstance()
             .signOut(this)
             .addOnCompleteListener {

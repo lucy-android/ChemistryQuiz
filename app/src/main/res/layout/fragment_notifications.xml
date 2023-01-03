@@ -19,7 +19,7 @@
             android:backgroundTint="@color/white"
             android:letterSpacing="0"
             android:text="@string/sign_out"
-            android:textColor="@color/bubblegum"
+            android:textColor="?attr/colorPrimaryDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
