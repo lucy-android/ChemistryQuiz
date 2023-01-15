@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import by.budanitskaya.l.chemistryquiz.ChemistryApp
 import by.budanitskaya.l.chemistryquiz.R
 import by.budanitskaya.l.chemistryquiz.databinding.FragmentGamesBinding
-import by.kirich1409.viewbindingdelegate.viewBinding
+import by.budanitskaya.l.chemistryquiz.viewbindingdelegate.viewBinding
 import javax.inject.Inject
 
 class GamesFragment : Fragment(R.layout.fragment_games) {
@@ -25,8 +25,7 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.textViewGames.text =
-            gamesBuilder
-                .addContext(requireContext())
+            gamesBuilder.addContext(requireContext())
                 .gamesComponent()
                 .getPrinter()
                 .getText()

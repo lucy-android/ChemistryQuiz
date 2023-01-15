@@ -3,7 +3,6 @@ package by.budanitskaya.l.chemistryquiz.notifications
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import by.budanitskaya.l.chemistryquiz.ChemistryApp
 import by.budanitskaya.l.chemistryquiz.LoginActivity
@@ -13,7 +12,8 @@ import by.budanitskaya.l.chemistryquiz.databinding.FragmentNotificationsBinding
 import by.budanitskaya.l.chemistryquiz.utils.context.ContextExtensions.showToast
 import by.budanitskaya.l.chemistryquiz.utils.context.ContextExtensions.start
 import by.budanitskaya.l.chemistryquiz.utils.view.ViewExtensions.click
-import by.kirich1409.viewbindingdelegate.viewBinding
+import by.budanitskaya.l.chemistryquiz.viewbindingdelegate.viewBinding
+
 
 class NotificationsFragment : Fragment(R.layout.fragment_notifications) {
 
@@ -30,9 +30,7 @@ class NotificationsFragment : Fragment(R.layout.fragment_notifications) {
             (activity as MainActivity).signOut()
             requireContext()
                 .apply {
-                    start<LoginActivity> {
-                        showToast(getString(R.string.logged_out))
-                    }
+                    start<LoginActivity> { showToast(getString(R.string.logged_out)) }
                 }
         }
     }

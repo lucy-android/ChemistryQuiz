@@ -4,8 +4,6 @@ package by.budanitskaya.l.chemistryquiz
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.animation.DecelerateInterpolator
@@ -16,10 +14,9 @@ import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.splashscreen.SplashScreenViewProvider
 import by.budanitskaya.l.chemistryquiz.databinding.ActivityMainBinding
-import by.kirich1409.viewbindingdelegate.viewBinding
+import by.budanitskaya.l.chemistryquiz.firebase.FirebaseAuthHelperImpl
+import by.budanitskaya.l.chemistryquiz.viewbindingdelegate.viewBinding
 import com.firebase.ui.auth.AuthUI
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.concurrent.schedule
@@ -31,7 +28,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         const val ANIMATION_DELAY = 1500
     }
 
-    private val binding: ActivityMainBinding by viewBinding(ActivityMainBinding::bind)
+    private val binding: ActivityMainBinding by viewBinding(ActivityMainBinding::inflate)
 
     private var contentHasLoaded: AtomicBoolean = AtomicBoolean(false)
 
@@ -119,34 +116,4 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         super.onBackPressed()
         finishAffinity()
     }
-}
-
-class FirebaseAuthHelperImpl(private val activity: MainActivity) : FirebaseAuthHelper {
-    private val auth: FirebaseUser? by lazy {
-        FirebaseAuth.getInstance().currentUser
-    }
-
-    override fun updateView() {
-        if (activity.intent != null) {
-           createUI()
-        } else {
-            activity.startActivity(Intent(activity, LoginActivity::class.java))
-            activity.finish()
-        }
-    }
-
-    override fun createUI() {
-        val list = auth?.providerData
-        var providerData = ""
-        list?.let {
-            for (provider in list) {
-                providerData = providerData + " " + provider.providerId
-            }
-        }
-    }
-}
-
-interface FirebaseAuthHelper{
-    fun updateView()
-    fun createUI()
 }
