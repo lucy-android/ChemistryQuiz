@@ -1,44 +1,35 @@
 package by.budanitskaya.l.chemistryquiz
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import by.budanitskaya.l.chemistryquiz.utils.context.ContextExtensions.showToast
+import by.budanitskaya.l.chemistryquiz.utils.context.ContextExtensions.start
 import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
 
-    private var resultLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode != Activity.RESULT_OK) {
-                return@registerForActivityResult
-            }
-
-            val response = IdpResponse.fromResultIntent(it.data)
-            if (it.resultCode == Activity.RESULT_OK) {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            } else {
+    private val resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode != Activity.RESULT_OK) {
+                val response = IdpResponse.fromResultIntent(result.data)
                 if (response == null) {
                     finish()
                 }
-                if (response?.error?.errorCode == ErrorCodes.NO_NETWORK) {
-                    return@registerForActivityResult
-                }
-                if (response?.error?.errorCode == ErrorCodes.UNKNOWN_ERROR) {
-                    Toast.makeText(this, response.error?.errorCode.toString(), Toast.LENGTH_LONG)
-                        .show()
-                    Log.d(getString(R.string.error_code), response.error?.errorCode.toString())
-                    return@registerForActivityResult
-                }
+                val errorCode = response?.error?.errorCode.toString()
+
+                showToast(errorCode)
+
+                Log.d(getString(R.string.error_code), errorCode)
+                return@registerForActivityResult
             }
+
+            start<MainActivity>()
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,8 +41,7 @@ class LoginActivity : AppCompatActivity() {
         if (FirebaseAuth.getInstance().currentUser == null) {
             createSignInIntent()
         } else {
-            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-            startActivity(intent)
+            start<MainActivity>()
         }
     }
 
@@ -76,5 +66,4 @@ class LoginActivity : AppCompatActivity() {
         resultLauncher.launch(intent)
 
     }
-
 }
