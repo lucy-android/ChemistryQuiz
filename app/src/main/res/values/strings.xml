@@ -12,4 +12,15 @@
     <string name="hello_games_fragment">Hello games fragment</string>
     <string name="hello_notifications_fragment">Hello notifications fragment</string>
 
+
+    <!--Logout-->
+    <string name="sign_out">Sign out</string>
+    <string name="logged_out">Successfully logged out</string>
+
+    <!--Firebase-->
+    <string name="tos_url">https://example.com/terms.html</string>
+    <string name="privacy_policy">https://example.com/privacy.html</string>
+    <string name="error_code">ERROR_CODE</string>
+
+
 </resources>
