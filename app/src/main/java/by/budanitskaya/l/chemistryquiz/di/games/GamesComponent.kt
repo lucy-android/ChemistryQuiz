@@ -1,6 +1,7 @@
-package by.budanitskaya.l.chemistryquiz.games
+package by.budanitskaya.l.chemistryquiz.di.games
 
 import android.content.Context
+import by.budanitskaya.l.chemistryquiz.games.GamePrinter
 import dagger.BindsInstance
 import dagger.Subcomponent
 

@@ -24,4 +24,7 @@
     <!--Paddings-->
     <dimen name="layout_padding">16dp</dimen>
 
+    <!--Custom actionbar size-->
+    <dimen name="dimen_action_bar_size">73dp</dimen>
+
 </resources>

@@ -2,10 +2,10 @@ package by.budanitskaya.l.chemistryquiz.di
 
 import android.content.Context
 import by.budanitskaya.l.chemistryquiz.MainActivity
-import by.budanitskaya.l.chemistryquiz.games.GamesComponent
-import by.budanitskaya.l.chemistryquiz.games.GamesFragment
-import by.budanitskaya.l.chemistryquiz.home.HomeFragment
-import by.budanitskaya.l.chemistryquiz.notifications.NotificationsFragment
+import by.budanitskaya.l.chemistryquiz.di.games.GamesComponent
+import by.budanitskaya.l.chemistryquiz.ui.fragment.games.GamesFragment
+import by.budanitskaya.l.chemistryquiz.ui.fragment.home.HomeFragment
+import by.budanitskaya.l.chemistryquiz.ui.fragment.notifications.NotificationsFragment
 import dagger.BindsInstance
 import dagger.Component
 

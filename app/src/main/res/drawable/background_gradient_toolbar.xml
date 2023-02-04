@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <item android:drawable="@drawable/background_rectangle"
+        android:height="58dp"/>
+    <item android:top="58dp"
+
+        android:drawable="@drawable/background_white_gradient"
+        android:height="17dp"/>
+
+    <item android:top="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawable="@drawable/splash_branding_name"
+        android:end="50dp"
+        android:gravity="center"
+        android:start="50dp" />
+</layer-list>

@@ -1,4 +1,4 @@
-package by.budanitskaya.l.chemistryquiz.games
+package by.budanitskaya.l.chemistryquiz.ui.fragment.games
 
 import android.content.Context
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import by.budanitskaya.l.chemistryquiz.ChemistryApp
 import by.budanitskaya.l.chemistryquiz.R
 import by.budanitskaya.l.chemistryquiz.databinding.FragmentGamesBinding
+import by.budanitskaya.l.chemistryquiz.di.games.GamesComponent
 import by.budanitskaya.l.chemistryquiz.viewbindingdelegate.viewBinding
 import javax.inject.Inject
 

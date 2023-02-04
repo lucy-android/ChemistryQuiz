@@ -1,4 +1,4 @@
-package by.budanitskaya.l.chemistryquiz.notifications
+package by.budanitskaya.l.chemistryquiz.ui.fragment.notifications
 
 import android.content.Context
 import android.os.Bundle

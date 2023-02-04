@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import by.budanitskaya.l.chemistryquiz.games.GamesFragment
-import by.budanitskaya.l.chemistryquiz.home.HomeFragment
-import by.budanitskaya.l.chemistryquiz.notifications.NotificationsFragment
+import by.budanitskaya.l.chemistryquiz.ui.fragment.games.GamesFragment
+import by.budanitskaya.l.chemistryquiz.ui.fragment.home.HomeFragment
+import by.budanitskaya.l.chemistryquiz.ui.fragment.notifications.NotificationsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 
