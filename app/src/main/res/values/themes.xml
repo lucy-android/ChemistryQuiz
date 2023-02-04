@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.ChemistryQuiz" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.ChemistryQuiz" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
 
         <item name="colorPrimary">@color/purple_500</item>
@@ -14,6 +14,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen.IconBackground">
@@ -33,6 +35,16 @@
 
     <style name="FirebaseAuthActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="SelectableItemTheme">
+        <item name="colorControlHighlight">@color/corn_flower_alpha_20</item>
+    </style>
+    Then:
+
+    <style name="SelectableItemBackground">
+        <item name="android:theme">@style/SelectableItemTheme</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
     </style>
 
 </resources>
