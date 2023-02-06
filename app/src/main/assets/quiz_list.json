@@ -1,0 +1,40 @@
+{
+  "topics": [
+    {
+      "name": "Acids and bases",
+      "drawable": "topics/acids_and_bases.webp"
+    },
+    {
+      "name": "Biochemistry",
+      "drawable": "topics/biochemistry.webp"
+    },
+    {
+      "name": "Periodic table",
+      "drawable": "topics/periodic_table.webp"
+    },
+    {
+      "name": "Organic Chemistry",
+      "drawable": "topics/organic_chemistry.webp"
+    },
+    {
+      "name": "Atomic Structure",
+      "drawable": "topics/atomic_structure.webp"
+    },
+    {
+      "name": "Electrolytes",
+      "drawable": "topics/electrolytes.webp"
+    },
+    {
+      "name": "RedOx",
+      "drawable": "topics/redox.webp"
+    },
+    {
+      "name": "Energy",
+      "drawable": "topics/energy.webp"
+    },
+    {
+      "name": "Crystals",
+      "drawable": "topics/crystals.webp"
+    }
+  ]
+}

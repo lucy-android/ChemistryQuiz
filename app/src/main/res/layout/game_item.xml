@@ -25,13 +25,23 @@
             android:clickable="true"
             style="@style/SelectableItemBackground"
             android:id="@+id/image_view_icon"
-            android:src="@drawable/chemistry_logo"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="@dimen/dimen_78"
             app:layout_constraintBottom_toTopOf="@id/topic_name"
             android:layout_height="@dimen/dimen_78"
+            android:contentDescription="@string/app_name" />
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progress_bar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/topic_name"
+            android:layout_height="wrap_content"
             android:contentDescription="@string/app_name" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
