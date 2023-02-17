@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import by.budanitskaya.l.chemistryquiz.constants.Constants.DEFAULT_DELAY
 import by.budanitskaya.l.chemistryquiz.databinding.GameItemBinding
-import by.budanitskaya.l.chemistryquiz.ui.fragment.home.Topic
+import by.budanitskaya.l.chemistryquiz.ui.model.topic.Topic
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -32,7 +33,7 @@ class GamesAdapter(private val coroutineScope: CoroutineScope) :
     }
 
     private suspend fun readFromFile(root: View, gameItem: Topic): Drawable? {
-        delay(3000)
+        delay(DEFAULT_DELAY)
         return Drawable.createFromStream(
             root.resources.assets.open(gameItem.drawable),
             null

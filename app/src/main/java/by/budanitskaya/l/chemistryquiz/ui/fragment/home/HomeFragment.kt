@@ -13,6 +13,8 @@ import by.budanitskaya.l.chemistryquiz.ChemistryApp
 import by.budanitskaya.l.chemistryquiz.R
 import by.budanitskaya.l.chemistryquiz.databinding.FragmentHomeBinding
 import by.budanitskaya.l.chemistryquiz.ui.adapter.games.GamesAdapter
+import by.budanitskaya.l.chemistryquiz.ui.model.topic.Topic
+import by.budanitskaya.l.chemistryquiz.ui.model.topic.TopicList
 import by.budanitskaya.l.chemistryquiz.utils.file.FileUtils.getFromAssets
 import by.budanitskaya.l.chemistryquiz.utils.json.JSONUtils.deSerialize
 import by.budanitskaya.l.chemistryquiz.viewbindingdelegate.viewBinding
@@ -72,7 +74,3 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         adapter.submitList(list)
     }
 }
-
-
-data class Topic(val name: String, val drawable: String)
-class TopicList(val topics: List<Topic>)
