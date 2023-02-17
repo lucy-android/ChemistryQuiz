@@ -1,11 +1,8 @@
 package by.budanitskaya.l.chemistryquiz.ui.fragment.home
 
 import android.content.Context
-import android.graphics.Rect
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,6 +12,7 @@ import by.budanitskaya.l.chemistryquiz.databinding.FragmentHomeBinding
 import by.budanitskaya.l.chemistryquiz.ui.adapter.games.GamesAdapter
 import by.budanitskaya.l.chemistryquiz.ui.model.topic.Topic
 import by.budanitskaya.l.chemistryquiz.ui.model.topic.TopicList
+import by.budanitskaya.l.chemistryquiz.utils.activity.ActivityExtensions.getBounds
 import by.budanitskaya.l.chemistryquiz.utils.file.FileUtils.getFromAssets
 import by.budanitskaya.l.chemistryquiz.utils.json.JSONUtils.deSerialize
 import by.budanitskaya.l.chemistryquiz.viewbindingdelegate.viewBinding
@@ -52,25 +50,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun setupRecyclerView(list: List<Topic>) {
         binding.recyclerViewGames.adapter = adapter
-        val layoutManager = GridLayoutManager(requireContext(), RECYCLER_SPAN_COUNT)
-        layoutManager.spanSizeLookup = IntermittentSpan()
-        binding.recyclerViewGames.layoutManager = layoutManager
-        val bounds = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            activity?.windowManager?.currentWindowMetrics?.bounds
-        } else {
-            val view = requireActivity().window.decorView
-            if (view.rootWindowInsets == null) Rect(0, 0, DEFAULT_RIGHT, 0)
-            else {
-                val insets =
-                    WindowInsetsCompat.toWindowInsetsCompat(view.rootWindowInsets, view)
-                        .getInsets(WindowInsetsCompat.Type.systemBars())
-                Rect(insets.left, insets.top, insets.right, insets.bottom)
-            }
-        } ?: return
-        val left = bounds.left
-        val right = bounds.right
+        val layoutManager = GridLayoutManager(requireContext(), RECYCLER_SPAN_COUNT).apply {
+            spanSizeLookup = IntermittentSpan()
+        }
 
-        binding.recyclerViewGames.addItemDecoration(SpacesItemDecoration((right - left) / 4))
+        binding.recyclerViewGames.layoutManager = layoutManager
+        val bounds = activity?.getBounds() ?: return
+
+        binding.recyclerViewGames.addItemDecoration(
+            SpacesItemDecoration((bounds.right - bounds.left) / 4))
         adapter.submitList(list)
     }
 }
