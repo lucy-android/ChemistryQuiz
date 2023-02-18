@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import by.budanitskaya.l.chemistryquiz.ChemistryApp
+import by.budanitskaya.l.chemistryquiz.MainActivity
 import by.budanitskaya.l.chemistryquiz.R
+import by.budanitskaya.l.chemistryquiz.Screen
 import by.budanitskaya.l.chemistryquiz.databinding.FragmentHomeBinding
 import by.budanitskaya.l.chemistryquiz.ui.adapter.games.GamesAdapter
 import by.budanitskaya.l.chemistryquiz.ui.model.topic.Topic
@@ -28,7 +30,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding: FragmentHomeBinding by viewBinding(FragmentHomeBinding::bind)
 
     private val adapter: GamesAdapter by lazy {
-        GamesAdapter(viewLifecycleOwner.lifecycleScope)
+        GamesAdapter(viewLifecycleOwner.lifecycleScope) {
+            (activity as MainActivity).navigator.navigateTo(Screen.TASK_SCREEN)
+        }
     }
 
     override fun onAttach(context: Context) {
@@ -58,7 +62,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val bounds = activity?.getBounds() ?: return
 
         binding.recyclerViewGames.addItemDecoration(
-            SpacesItemDecoration((bounds.right - bounds.left) / 4))
+            SpacesItemDecoration((bounds.right - bounds.left) / 4)
+        )
         adapter.submitList(list)
     }
 }

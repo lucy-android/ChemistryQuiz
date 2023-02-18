@@ -16,8 +16,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val firebaseAuthHelper = FirebaseAuthHelperImpl(this)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    val navigator: Navigator by lazy {
+        Navigator(supportFragmentManager, binding.navView)
+    }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
         (application as ChemistryApp).appComponent.inject(this)
         super.onCreate(savedInstanceState)
     }
@@ -26,7 +29,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         super.onStart()
         setSupportActionBar(binding.toolbar)
         title = ""
-        val navigator = Navigator(supportFragmentManager, binding.navView)
         this.lifecycle.addObserver(navigator)
     }
 

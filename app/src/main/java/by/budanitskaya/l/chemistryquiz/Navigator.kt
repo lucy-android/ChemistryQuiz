@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import by.budanitskaya.l.chemistryquiz.ui.fragment.TestFragment
 import by.budanitskaya.l.chemistryquiz.ui.fragment.games.GamesFragment
 import by.budanitskaya.l.chemistryquiz.ui.fragment.home.HomeFragment
 import by.budanitskaya.l.chemistryquiz.ui.fragment.notifications.NotificationsFragment
@@ -54,6 +55,15 @@ class Navigator(
         return false
     }
 
+    fun navigateTo(screen: Screen) {
+        when (screen) {
+            Screen.TASK_SCREEN -> loadFragment(TestFragment.newInstance())
+            else -> {
+                // do nothing
+            }
+        }
+    }
+
     override fun onDestroy(owner: LifecycleOwner) {
         super.onDestroy(owner)
         homeFragment = null
@@ -61,4 +71,9 @@ class Navigator(
         notificationFragment = null
     }
 
+}
+
+enum class Screen {
+    HOME_SCREEN,
+    TASK_SCREEN
 }

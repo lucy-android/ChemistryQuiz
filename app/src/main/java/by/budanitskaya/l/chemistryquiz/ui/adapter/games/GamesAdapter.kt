@@ -10,11 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import by.budanitskaya.l.chemistryquiz.constants.Constants.DEFAULT_DELAY
 import by.budanitskaya.l.chemistryquiz.databinding.GameItemBinding
 import by.budanitskaya.l.chemistryquiz.ui.model.topic.Topic
+import by.budanitskaya.l.chemistryquiz.utils.view.ViewExtensions.click
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class GamesAdapter(private val coroutineScope: CoroutineScope) :
+class GamesAdapter(
+    private val coroutineScope: CoroutineScope,
+    private val openGameScreen: () -> Unit
+) :
     ListAdapter<Topic, GamesAdapter.ViewHolder>(DifferenceCallback) {
     inner class ViewHolder(private val binding: GameItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -29,6 +33,7 @@ class GamesAdapter(private val coroutineScope: CoroutineScope) :
                 binding.topicName.visibility = View.VISIBLE
             }
 
+            binding.imageViewIcon click { openGameScreen.invoke() }
         }
     }
 
