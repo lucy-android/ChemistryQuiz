@@ -45,5 +45,39 @@ class CountdownClockView(context: Context, attributeSet: AttributeSet) :
             (centreY + radiusSmall).toFloat()
         canvas?.drawArc(oval, 0F, 270F, true, calculateArcPaint())
 
+
+        canvas?.drawCircle(
+            centreX.toFloat(),
+            centreY.toFloat(),
+            rimWidth / 2,
+            calculateStrokePaint(rimWidth)
+        )
+
+        /**
+         * Center: coordinates х and у
+         *             centreX.toFloat(), centreY.toFloat()
+         *             first point
+         *             centreX.toFloat() - rimWidth / 2,  centreY.toFloat()
+         *             second point
+         *             centreX.toFloat() + rimWidth / 2,  centreY.toFloat()
+         *             third point
+         *             centreX.toFloat(), centreY.toFloat() - radius
+         */
+
+
+        val path = Path()
+
+        path.moveTo(centreX.toFloat() - rimWidth,  centreY.toFloat())
+        path.lineTo(centreX.toFloat() + rimWidth,  centreY.toFloat())
+        path.lineTo(centreX.toFloat(), centreY.toFloat() - radius)
+        path.lineTo(centreX.toFloat() - rimWidth,  centreY.toFloat())
+
+        path.close()
+        canvas?.drawPath(path,Paint().apply {
+            color = Color.BLACK
+            style = Paint.Style.FILL
+        })
+
     }
+
 }
