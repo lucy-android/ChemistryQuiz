@@ -4,7 +4,9 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import kotlin.math.cos
 import kotlin.math.min
+import kotlin.math.sin
 
 
 class CountdownClockView(context: Context, attributeSet: AttributeSet) :
@@ -26,6 +28,8 @@ class CountdownClockView(context: Context, attributeSet: AttributeSet) :
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
+        val angle = 123
+
         val centreX = (right - left).toDouble() / 2
         val centreY = (bottom - top).toDouble() / 2
         val rimWidth = min(centreX, centreY).toFloat() / 10
@@ -39,13 +43,6 @@ class CountdownClockView(context: Context, attributeSet: AttributeSet) :
             calculateStrokePaint(rimWidth)
         )
 
-
-        val oval = RectF()
-        oval[(centreX - radiusSmall).toFloat(), (centreY - radiusSmall).toFloat(), (centreX + radiusSmall).toFloat()] =
-            (centreY + radiusSmall).toFloat()
-        canvas?.drawArc(oval, 0F, 270F, true, calculateArcPaint())
-
-
         canvas?.drawCircle(
             centreX.toFloat(),
             centreY.toFloat(),
@@ -53,30 +50,37 @@ class CountdownClockView(context: Context, attributeSet: AttributeSet) :
             calculateStrokePaint(rimWidth)
         )
 
-        /**
-         * Center: coordinates х and у
-         *             centreX.toFloat(), centreY.toFloat()
-         *             first point
-         *             centreX.toFloat() - rimWidth / 2,  centreY.toFloat()
-         *             second point
-         *             centreX.toFloat() + rimWidth / 2,  centreY.toFloat()
-         *             third point
-         *             centreX.toFloat(), centreY.toFloat() - radius
-         */
-
-
         val path = Path()
 
-        path.moveTo(centreX.toFloat() - rimWidth,  centreY.toFloat())
-        path.lineTo(centreX.toFloat() + rimWidth,  centreY.toFloat())
-        path.lineTo(centreX.toFloat(), centreY.toFloat() - radius)
-        path.lineTo(centreX.toFloat() - rimWidth,  centreY.toFloat())
+
+        val oval = RectF()
+        oval[(centreX - radiusSmall).toFloat(), (centreY - radiusSmall).toFloat(), (centreX + radiusSmall).toFloat()] =
+            (centreY + radiusSmall).toFloat()
+        canvas?.drawArc(oval, -90F, angle.toFloat(), true, calculateArcPaint())
+
+        path.moveTo(
+            (centreX - rimWidth * cos(3.1415 / 2 / 90 * angle)).toFloat(),
+            (centreY - rimWidth * sin(3.1415 / 2 / 90 * angle).toFloat()).toFloat()
+        )
+        path.lineTo(
+            centreX.toFloat() + rimWidth * cos(3.1415 / 2 / 90 * angle).toFloat(),
+            centreY.toFloat() + rimWidth * sin(
+                3.1415 / 2 / 90 * angle
+            ).toFloat()
+        )
+        path.lineTo(
+            (centreX.toFloat() + radius * sin(3.1415 / 2 / 90 * angle)).toFloat(),
+            (centreY - radius * cos(3.1415 / 2 / 90 * angle)).toFloat()
+        )
 
         path.close()
-        canvas?.drawPath(path,Paint().apply {
+        canvas?.drawPath(path, Paint().apply {
             color = Color.BLACK
             style = Paint.Style.FILL
         })
+
+
+
 
     }
 
