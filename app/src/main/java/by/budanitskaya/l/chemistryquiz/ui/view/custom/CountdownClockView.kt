@@ -1,9 +1,11 @@
 package by.budanitskaya.l.chemistryquiz.ui.view.custom
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.LinearInterpolator
 import by.budanitskaya.l.chemistryquiz.R
 import kotlin.math.cos
 import kotlin.math.min
@@ -13,7 +15,16 @@ import kotlin.math.sin
 class CountdownClockView(context: Context, attributeSet: AttributeSet) :
     View(context, attributeSet) {
 
+    private var sweepColor: Int = Color.MAGENTA
+    private var rimColor: Int = Color.BLACK
+    private var timeSeconds: Int = 1
+    private var ringRotationAnimator: ValueAnimator? = null
+
     private var setAngle = 0f
+        set(value) {
+            field = value
+            postInvalidateOnAnimation()
+        }
 
     init {
         val typedArray = context.theme.obtainStyledAttributes(
@@ -22,57 +33,34 @@ class CountdownClockView(context: Context, attributeSet: AttributeSet) :
             0, 0
         )
         try {
-            setAngle = typedArray.getFloat(R.styleable.CountdownClockView_angle, DEFAULT_ANGLE)
+            timeSeconds =
+                typedArray.getInteger(
+                    R.styleable.CountdownClockView_time_seconds,
+                    DEFAULT_TIME_SECONDS
+                )
+
+            rimColor = typedArray.getColor(R.styleable.CountdownClockView_rim_color, Color.BLACK)
+            sweepColor =
+                typedArray.getColor(R.styleable.CountdownClockView_sweep_color, Color.MAGENTA)
         } finally {
             typedArray.recycle()
         }
-    }
 
-    private fun drawAngle(
-        angle: Float,
-        canvas: Canvas?,
-        centerX: Double,
-        centerY: Double,
-        rimWidth: Double,
-        radius: Double,
-        innerRadius: Double
-    ) {
-        val path = Path()
-        val oval = RectF()
-        oval[(centerX - innerRadius).toFloat(), (centerY - innerRadius).toFloat(), (centerX + innerRadius).toFloat()] =
-            (centerY + innerRadius).toFloat()
-        canvas?.drawArc(oval, -90F, angle, true, calculateArcPaint())
-
-        path.moveTo(
-            (centerX - rimWidth * cos(ONE_DEGREE * angle)).toFloat(),
-            (centerY - rimWidth * sin(ONE_DEGREE * angle).toFloat()).toFloat()
-        )
-        path.lineTo(
-            (centerX.toFloat() + rimWidth * cos(ONE_DEGREE * angle).toFloat()).toFloat(),
-            (centerY.toFloat() + rimWidth * sin(
-                ONE_DEGREE * angle
-            ).toFloat()).toFloat()
-        )
-        path.lineTo(
-            (centerX.toFloat() + radius * sin(ONE_DEGREE * angle)).toFloat(),
-            (centerY - radius * cos(ONE_DEGREE * angle)).toFloat()
-        )
-
-        path.close()
-        canvas?.drawPath(path, Paint().apply {
-            color = Color.BLACK
-            style = Paint.Style.FILL
-        })
+        ringRotationAnimator = ValueAnimator.ofFloat(0f, 360F).apply {
+            addUpdateListener {
+                setAngle = it.animatedValue as Float
+            }
+        }.setAnimator(timeSeconds.toLong() * 1000)
     }
 
     private fun calculateStrokePaint(width: Float) = Paint().apply {
-        color = Color.BLACK
+        color = rimColor
         style = Paint.Style.STROKE
         strokeWidth = width
     }
 
     private fun calculateArcPaint() = Paint().apply {
-        color = Color.BLUE
+        color = sweepColor
         strokeWidth = ARC_WIDTH
         style = Paint.Style.FILL
         isAntiAlias = true
@@ -84,9 +72,34 @@ class CountdownClockView(context: Context, attributeSet: AttributeSet) :
         val centreY = (bottom - top).toDouble() / 2
         val rimWidth = (min(centreX, centreY).toFloat() / 10).toDouble()
         val radius = ((min(right - left, bottom - top).toFloat()) / 2).toDouble()
-        val radiusSmall = radius - rimWidth
+        val innerRadius = radius - rimWidth
 
-        drawAngle(setAngle, canvas, centreX, centreY, rimWidth, radius, radiusSmall)
+        val path = Path()
+        val oval = RectF()
+        oval[(centreX - innerRadius).toFloat(), (centreY - innerRadius).toFloat(), (centreX + innerRadius).toFloat()] =
+            (centreY + innerRadius).toFloat()
+        canvas?.drawArc(oval, -90F, setAngle, true, calculateArcPaint())
+
+        path.moveTo(
+            (centreX - rimWidth * cos(ONE_DEGREE * setAngle)).toFloat(),
+            (centreY - rimWidth * sin(ONE_DEGREE * setAngle).toFloat()).toFloat()
+        )
+        path.lineTo(
+            (centreX.toFloat() + rimWidth * cos(ONE_DEGREE * setAngle).toFloat()).toFloat(),
+            (centreY.toFloat() + rimWidth * sin(
+                ONE_DEGREE * setAngle
+            ).toFloat()).toFloat()
+        )
+        path.lineTo(
+            (centreX.toFloat() + radius * sin(ONE_DEGREE * setAngle)).toFloat(),
+            (centreY - radius * cos(ONE_DEGREE * setAngle)).toFloat()
+        )
+
+        path.close()
+        canvas?.drawPath(path, Paint().apply {
+            color = rimColor
+            style = Paint.Style.FILL
+        })
 
         canvas?.drawCircle(
             centreX.toFloat(),
@@ -101,11 +114,22 @@ class CountdownClockView(context: Context, attributeSet: AttributeSet) :
             (rimWidth / 2).toFloat(),
             calculateStrokePaint(rimWidth.toFloat())
         )
+
+
     }
 
     companion object {
         const val ONE_DEGREE = 3.1415 / 2 / 90
         const val ARC_WIDTH = 5f
-        const val DEFAULT_ANGLE = 60f
+        const val DEFAULT_TIME_SECONDS = 1
+    }
+}
+
+
+private fun ValueAnimator.setAnimator(time: Long): ValueAnimator {
+    return apply {
+        duration = time
+        interpolator = LinearInterpolator()
+        start()
     }
 }

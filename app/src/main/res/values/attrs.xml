@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="CountdownClockView">
-        <attr name="angle" format="float" />
+        <attr name="time_seconds" format="integer" />
+        <attr name="sweep_color" format="color" />
+        <attr name="rim_color" format="color" />
     </declare-styleable>
 </resources>

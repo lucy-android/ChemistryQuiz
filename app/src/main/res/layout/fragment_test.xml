@@ -10,12 +10,14 @@
 
     <by.budanitskaya.l.chemistryquiz.ui.view.custom.CountdownClockView
         android:id="@+id/clock_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="@dimen/dimen_270"
+        android:layout_height="@dimen/dimen_270"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        custom:angle="160" />
+        custom:rim_color="@color/corn_flower"
+        custom:sweep_color="@color/ice_blue"
+        custom:time_seconds="60" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
