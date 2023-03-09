@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import by.budanitskaya.l.chemistryquiz.ui.fragment.TestFragment
+import by.budanitskaya.l.chemistryquiz.ui.fragment.test.TestFragment
 import by.budanitskaya.l.chemistryquiz.ui.fragment.games.GamesFragment
 import by.budanitskaya.l.chemistryquiz.ui.fragment.home.HomeFragment
 import by.budanitskaya.l.chemistryquiz.ui.fragment.notifications.NotificationsFragment
+import by.budanitskaya.l.chemistryquiz.ui.fragment.result.TestResultFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 
@@ -58,6 +59,7 @@ class Navigator(
     fun navigateTo(screen: Screen) {
         when (screen) {
             Screen.TASK_SCREEN -> loadFragment(TestFragment.newInstance())
+            Screen.TEST_RESULT_SCREEN -> loadFragment(TestResultFragment.newInstance("", ""))
             else -> {
                 // do nothing
             }
@@ -75,5 +77,6 @@ class Navigator(
 
 enum class Screen {
     HOME_SCREEN,
-    TASK_SCREEN
+    TASK_SCREEN,
+    TEST_RESULT_SCREEN
 }

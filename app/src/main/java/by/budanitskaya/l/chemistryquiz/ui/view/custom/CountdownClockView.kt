@@ -19,6 +19,7 @@ class CountdownClockView(context: Context, attributeSet: AttributeSet) :
     private var rimColor: Int = Color.BLACK
     private var timeSeconds: Int = 1
     private var ringRotationAnimator: ValueAnimator? = null
+    var lambda: (() -> Unit)? = null
 
     private var setAngle = 0f
         set(value) {
@@ -49,6 +50,9 @@ class CountdownClockView(context: Context, attributeSet: AttributeSet) :
         ringRotationAnimator = ValueAnimator.ofFloat(0f, 360F).apply {
             addUpdateListener {
                 setAngle = it.animatedValue as Float
+                if (setAngle == 360f) {
+                    lambda?.invoke()
+                }
             }
         }.setAnimator(timeSeconds.toLong() * 1000)
     }

@@ -22,5 +22,7 @@
     <string name="privacy_policy">https://example.com/privacy.html</string>
     <string name="error_code">ERROR_CODE</string>
 
+    <string name="hello_test_result_fragment">This is the test result</string>
+
 
 </resources>
