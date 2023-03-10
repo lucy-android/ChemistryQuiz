@@ -59,7 +59,7 @@ class Navigator(
     fun navigateTo(screen: Screen) {
         when (screen) {
             Screen.TASK_SCREEN -> loadFragment(TestFragment.newInstance())
-            Screen.TEST_RESULT_SCREEN -> loadFragment(TestResultFragment.newInstance("", ""))
+            Screen.TEST_RESULT_SCREEN -> loadFragment(TestResultFragment.newInstance())
             else -> {
                 // do nothing
             }

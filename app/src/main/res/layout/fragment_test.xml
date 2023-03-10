@@ -14,13 +14,39 @@
             android:id="@+id/clock_view"
             android:layout_width="@dimen/dimen_270"
             android:layout_height="@dimen/dimen_270"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/dimen_38"
+            app:layout_constraintBottom_toTopOf="@id/pager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             custom:rim_color="@color/corn_flower"
             custom:sweep_color="@color/ice_blue"
             custom:time_seconds="60" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tabBackground="@drawable/tab_selector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/pager"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicator="@null"
+            android:layout_marginTop="@dimen/dimen_108"
+            app:layout_constraintTop_toBottomOf="@id/clock_view"
+            android:layout_width="@dimen/dimen_108"
+            android:layout_height="wrap_content" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_170"
+            android:layout_marginHorizontal="@dimen/dimen_50"
+            android:layout_marginBottom="@dimen/dimen_108"
+            android:layout_marginTop="@dimen/dimen_38"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clock_view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

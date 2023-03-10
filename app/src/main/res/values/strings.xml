@@ -11,6 +11,7 @@
     <string name="hello_home_fragment">Hello home fragment</string>
     <string name="hello_games_fragment">Hello games fragment</string>
     <string name="hello_notifications_fragment">Hello notifications fragment</string>
+    <string name="hello_test_result_fragment">This is the test result</string>
 
 
     <!--Logout-->
@@ -21,8 +22,5 @@
     <string name="tos_url">https://example.com/terms.html</string>
     <string name="privacy_policy">https://example.com/privacy.html</string>
     <string name="error_code">ERROR_CODE</string>
-
-    <string name="hello_test_result_fragment">This is the test result</string>
-
 
 </resources>
