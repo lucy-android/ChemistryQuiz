@@ -19,6 +19,7 @@
     <dimen name="dimen_143">143dp</dimen>
     <dimen name="dimen_163">163dp</dimen>
     <dimen name="dimen_170">170dp</dimen>
+    <dimen name="dimen_200">200dp</dimen>
     <dimen name="dimen_270">270dp</dimen>
 
     <dimen name="default_vector_size">100dp</dimen>

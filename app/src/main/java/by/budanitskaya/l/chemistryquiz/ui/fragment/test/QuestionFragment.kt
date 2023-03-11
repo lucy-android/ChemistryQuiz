@@ -7,7 +7,7 @@ import by.budanitskaya.l.chemistryquiz.R
 import by.budanitskaya.l.chemistryquiz.databinding.FragmentQuestionBinding
 import by.budanitskaya.l.chemistryquiz.viewbindingdelegate.viewBinding
 
-private val FIRST_ARG_KEY = "key"
+private const val FIRST_ARG_KEY = "key"
 
 class QuestionFragment : Fragment(R.layout.fragment_question) {
 
@@ -15,17 +15,21 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
 
     companion object {
         @JvmStatic
-        fun newInstance(intObject: Int) = QuestionFragment().apply {
+        fun newInstance(questionObject: Question) = QuestionFragment().apply {
             arguments = Bundle().apply {
-                putInt(FIRST_ARG_KEY, intObject)
+                putParcelable(FIRST_ARG_KEY, questionObject)
             }
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.getInt(FIRST_ARG_KEY)?.let { number ->
-            binding.textViewNumber.text = number.toString()
+        (arguments?.getParcelable(FIRST_ARG_KEY) as? Question)?.let { question ->
+            binding.textViewNumber.text = question.text
+            binding.radioButton1.text = question.answers[0]
+            binding.radioButton2.text = question.answers[1]
+            binding.radioButton3.text = question.answers[2]
+            binding.radioButton4.text = question.answers[3]
         }
     }
 }

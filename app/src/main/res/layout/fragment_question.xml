@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/frameLayout3"
+        android:id="@+id/constraint_layout_test"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.fragment.test.QuestionFragment">
@@ -13,10 +13,44 @@
             android:id="@+id/text_view_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/radio_group_one"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_number" >
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RadioButton1" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RadioButton2" />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RadioButton3" />
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RadioButton4" />
+        </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
