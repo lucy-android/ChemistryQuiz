@@ -11,8 +11,9 @@
 
         <TextView
             android:id="@+id/text_view_number"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="start"
             app:layout_constraintBottom_toTopOf="@+id/radio_group_one"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -20,36 +21,37 @@
 
         <RadioGroup
             android:id="@+id/radio_group_one"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="start"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_view_number" >
+            app:layout_constraintTop_toBottomOf="@id/text_view_number">
 
             <RadioButton
                 android:id="@+id/radioButton1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton1" />
+                tools:text="RadioButton1" />
 
             <RadioButton
                 android:id="@+id/radioButton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton2" />
+                tools:text="RadioButton2" />
 
             <RadioButton
                 android:id="@+id/radioButton3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton3" />
+                tools:text="RadioButton3" />
 
             <RadioButton
                 android:id="@+id/radioButton4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton4" />
+                tools:text="RadioButton4" />
         </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

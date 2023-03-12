@@ -13,6 +13,10 @@ object ViewExtensions {
         }
         setOnClickListener(safeClickListener)
     }
+
+    fun View.toVisible() {
+        visibility = View.VISIBLE
+    }
 }
 
 

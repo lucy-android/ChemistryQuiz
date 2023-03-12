@@ -3,6 +3,10 @@
 
     <dimen name="dimen_3">3dp</dimen>
     <dimen name="dimen_4">4dp</dimen>
+    <dimen name="dimen_5">5dp</dimen>
+    <dimen name="dimen_8">8dp</dimen>
+    <dimen name="dimen_10">10dp</dimen>
+    <dimen name="dimen_15">15dp</dimen>
     <dimen name="dimen_17">17dp</dimen>
     <dimen name="dimen_20">20dp</dimen>
     <dimen name="dimen_22">22dp</dimen>
@@ -30,5 +34,9 @@
 
     <!--Custom actionbar size-->
     <dimen name="dimen_action_bar_size">73dp</dimen>
+
+    <!--Text size-->
+    <dimen name="text_size_15">15sp</dimen>
+
 
 </resources>

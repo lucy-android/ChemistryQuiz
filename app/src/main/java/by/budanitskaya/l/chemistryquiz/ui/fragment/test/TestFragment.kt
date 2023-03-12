@@ -28,23 +28,26 @@ class TestFragment : Fragment(R.layout.fragment_test) {
         val adapter = TestAdapter(
             listOf(
                 Question(
-                    "Which of these indicators is useless foe detecting acids?",
+                    "Which of these indicators is useless for detecting acids?",
+                    0,
                     listOf("Cresolphthalein", "Congo red", "Methyl yellow", "Bromocresol green"),
                     "Acids and bases",
                     "All phthaleins in aqueous solutions are insensible towards acids, so the correct answer is cresolphthalein."
                 ),
                 Question(
                     "What measurement of the pH scale is considered a neutral liquid?",
+                    0,
                     listOf("7", "0", "3", "14"),
                     "Acids and bases",
                     "pH values below 7 are acidic, above 7 are basic and 7 is neutral."
                 ), Question(
                     "Which of the following is a way that acids and bases are used in science and technology?",
+                    3,
                     listOf(
-                        "All of the Above",
                         "Batteries",
                         "Household cleaning products",
-                        "Fertilizer"
+                        "Fertilizer",
+                        "All of the Above"
                     ),
                     "Acids and bases",
                     "All of these products contain alkaline or acidic substances and are used in technological applications."
@@ -67,11 +70,8 @@ class TestFragment : Fragment(R.layout.fragment_test) {
 @Parcelize
 data class Question(
     val text: String,
+    val correctAnswer: Int,
     val answers: List<String>,
     val topic: String,
     val explanation: String
 ) : Parcelable
-
-
-
-
