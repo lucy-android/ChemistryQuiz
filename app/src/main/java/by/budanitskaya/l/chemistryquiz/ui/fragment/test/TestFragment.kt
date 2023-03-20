@@ -57,11 +57,13 @@ class TestFragment : Fragment(R.layout.fragment_test) {
         with(binding) {
             pager.adapter = adapter
             TabLayoutMediator(tabLayout, pager) { _, _ -> }.attach()
-            //pager.isUserInputEnabled = false
+            pager.isUserInputEnabled = false
         }
 
         binding.clockView.lambda = {
-            (activity as MainActivity).navigator.navigateTo(Screen.TEST_RESULT_SCREEN)
+            activity?.let {
+                (it as MainActivity).navigator.navigateTo(Screen.TEST_RESULT_SCREEN)
+            }
         }
     }
 }

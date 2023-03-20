@@ -27,11 +27,13 @@ class NotificationsFragment : Fragment(R.layout.fragment_notifications) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonLogout click {
-            (activity as MainActivity).signOut()
-            requireContext()
-                .apply {
-                    start<LoginActivity> { showToast(getString(R.string.logged_out)) }
-                }
+            if (activity != null) {
+                (activity as MainActivity).signOut()
+                requireContext()
+                    .apply {
+                        start<LoginActivity> { showToast(getString(R.string.logged_out)) }
+                    }
+            }
         }
     }
 }

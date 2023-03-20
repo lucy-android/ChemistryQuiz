@@ -31,7 +31,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val adapter: GamesAdapter by lazy {
         GamesAdapter(viewLifecycleOwner.lifecycleScope) {
-            (activity as MainActivity).navigator.navigateTo(Screen.TASK_SCREEN)
+            activity?.let {
+                (it as MainActivity).navigator.navigateTo(Screen.TASK_SCREEN)
+            }
         }
     }
 

@@ -35,6 +35,12 @@ class CustomDialog(context: Context) {
             return this
         }
 
+        fun setMessageText(text: String): Builder {
+            dialogBinding.textViewMessage.toVisible()
+            dialogBinding.textViewMessage.text = text
+            return this
+        }
+
         fun setDarkButtonText(okButtonTextRes: Int): Builder {
             dialogBinding.buttonDark.toVisible()
             dialogBinding.buttonDark.text = root.context.getString(okButtonTextRes)

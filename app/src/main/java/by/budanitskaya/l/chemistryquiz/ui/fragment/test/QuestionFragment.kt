@@ -46,7 +46,8 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
             if (getRadioButtonForCorrectAnswer(question.correctAnswer) == checkedId) {
                 val dialog = CustomDialog.Builder(binding.root as ViewGroup)
                     .setCancelable(false)
-                    .setMessageText(R.string.test_correct_answer)
+                    .setTitle(R.string.test_correct_answer)
+                    .setMessageText(question.explanation)
                     .setDarkButtonText(R.string.test_ok)
                     .setDarkButtonClickEvent { cancelAllDialogs() }
                     .build()
